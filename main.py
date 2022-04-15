@@ -1,4 +1,7 @@
 from random import randint
+import numpy as np
+
+from Matrix import Matrix
 
 
 def lfsr(condition, polynom, polynom_size, result_size):
@@ -13,6 +16,16 @@ def lfsr(condition, polynom, polynom_size, result_size):
         result = new_condition.pop(-1)
         result_array.insert(len(result_array), result)
 
+    return result_array
+
+
+def select_generator(first, second, third):
+    result_array = []
+    for j in range(0, len(first)):
+        if first[j] == 0:
+            result_array.insert(0, second[j])
+        else:
+            result_array.insert(0, third[j])
     return result_array
 
 
@@ -33,6 +46,11 @@ if __name__ == '__main__':
     first_result = lfsr(condition, FIRST_POLYNOM, POLYNOM_SIZE, SIZE)
     second_result = lfsr(condition, SECOND_POLYNOM, POLYNOM_SIZE, SIZE)
     third_result = lfsr(condition, THIRD_POLYNOM, POLYNOM_SIZE, SIZE)
-    print(first_result)
+    # print(first_result)
     # print(second_result)
     # print(third_result)
+    result = select_generator(first_result, second_result, third_result)
+    np_result = np.array(result)
+    print(np_result)
+    result_of_bin_matrix_test = Matrix.binary_matrix_rank_text(result)
+    print(result_of_bin_matrix_test)
