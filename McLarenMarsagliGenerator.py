@@ -1,5 +1,5 @@
 from main import lfsr1, lfsr2
-from random import randint
+from random_excursions_test import randint
 
 
 # x - 1 последовательность

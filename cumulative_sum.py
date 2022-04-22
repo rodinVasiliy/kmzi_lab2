@@ -33,6 +33,8 @@ class CumulativeSums:
         if not mode == 0:
             binary_data = binary_data[::-1]
 
+        # 100101
+        # [0,0,0,0,0,0]
         counter = 0
         for char in binary_data:
             sub = 1
@@ -48,7 +50,9 @@ class CumulativeSums:
         # absolute values of the partial sums Sk.
         abs_max = max(abs(counts))
 
+        # start of sum
         start = int(floor(0.25 * floor(-length_of_binary_data / abs_max) + 1))
+        # end of sum
         end = int(floor(0.25 * floor(length_of_binary_data / abs_max) - 1))
 
         terms_one = []
